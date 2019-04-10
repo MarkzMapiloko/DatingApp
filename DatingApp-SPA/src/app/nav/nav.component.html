@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Dating App</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="nav-item active">
+    <a class="nav-link" href="#">Matches</a>
+
+    </li>
+    <li class="nav-item">
+	  <a class="nav-link" href="#">Lists</a>
+    </li>
+
+    <li class="nav-item">
+	  <a class="nav-link" href="#">Messages</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" (click)="logout()">Logout</a>
+        </li>
+        
+
+    <li *ngIf="loggedIn()" class="dropdown">
+        <a class="dropdown-toggle">
+          Welcome User
+        </a>
+      
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#"><i class = "fa fa-user "></i> Edit Profile</a>
+          <div class="dropdown-devider"> </div>
+          <a class="dropdown-item" href="#"><i class = "fa fa-sign-out"></i> Logout</a>
+        </div>
+      </li>
+
+    </ul>
+    
+    <form *ngIf="!loggedIn()" #loginForm = "ngForm" class="navbar-form navbar-right" action="/action_page.php" (ngSubmit) = "login()" >
+      <div class="form-group" >
+        <input type="text" class="form-control" placeholder="Username" required name="username" [(ngModel)]="model.username">&nbsp;
+        <input type="password" class="form-control" placeholder="Password" required name="password" [(ngModel)]="model.password">&nbsp;&nbsp;
+      </div>
+      <button [disabled] = "!loginForm.valid" type="submit" class="btn btn-success">Login</button>
+    </form>
+    
+
+  </div>
+</nav>
+
+</body>
+</html>
